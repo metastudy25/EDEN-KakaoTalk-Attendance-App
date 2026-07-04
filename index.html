@@ -287,6 +287,7 @@ const ATTENDANCE_MSGS = [
   {id:'not_arrived', icon:'⚠️', title:'미등원 알림',   desc:'예정 시간 초과 미등원'},
   {id:'no_return',      icon:'🚶', title:'외출 후 미복귀',      desc:'현재 시각 기준 미복귀'},
   {id:'break_no_return',icon:'⏰', title:'쉬는 시간 후 미복귀', desc:'쉬는 시간 종료 후 입실 촉구'},
+  {id:'meal_no_return', icon:'🍽️', title:'식사 후 미복귀',      desc:'식사 시간 종료 후 입실 촉구'},
   {id:'early_leave',    icon:'🏃', title:'조기 퇴원',           desc:'사유 선택 포함'},
   {id:'arrived',     icon:'✅', title:'정상 등원',     desc:'등원 시각 안내'},
   {id:'leaved',      icon:'🌙', title:'정상 퇴원',     desc:'퇴원 시각 안내'},
@@ -401,6 +402,7 @@ function renderExtras() {
   if (id==='not_arrived') html=`<div class="extra-inputs"><h3>추가 정보</h3>${timeBlock('현재 시각')}</div>`;
   else if (id==='no_return') html=`<div class="extra-inputs"><h3>추가 정보</h3>${timeBlock('현재 시각')}</div>`;
   else if (id==='break_no_return') html=`<div class="extra-inputs"><h3>추가 정보</h3>${timeBlock('쉬는 시간 종료')}</div>`;
+  else if (id==='meal_no_return')  html=`<div class="extra-inputs"><h3>추가 정보</h3>${timeBlock('식사 시간 종료')}</div>`;
   else if (id==='early_leave') {
     html=`<div class="extra-inputs"><h3>추가 정보</h3>${timeBlock('퇴원 시각')}
       <div class="status-row"><label>퇴원 사유</label>
@@ -484,6 +486,7 @@ function buildMessage() {
     not_arrived: `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생이 ${t} 현재 아직 등원하지 않았습니다. 확인 부탁드립니다.\n\n📞 010-8442-2817`,
     no_return:        `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생이 외출 후 ${t} 현재 아직 복귀하지 않았습니다. 확인 부탁드립니다.\n\n📞 010-8442-2817`,
     break_no_return:  `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생에게 😊\n\n⏰ ${t} 쉬는 시간이 끝났습니다.\n서둘러 입실해 주세요!\n\n📞 010-8442-2817`,
+    meal_no_return:   `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생에게 😊\n\n🍽️ ${t} 식사 시간이 끝났습니다.\n서둘러 들어오세요!\n\n📞 010-8442-2817`,
     arrived:     `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생이 ${t}에 정상 등원했습니다. 😊`,
     leaved:      `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생이 ${t}에 귀가했습니다. 오늘도 수고했습니다! 😊`,
     absent:      `안녕하세요, 이든관리형학습센터입니다.\n\n[${n}] 학생이 오늘 사전 연락 없이 등원하지 않았습니다. 확인 부탁드립니다.\n\n📞 010-8442-2817`,
